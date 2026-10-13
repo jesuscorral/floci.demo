@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+*.user
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Floci Data
+data/

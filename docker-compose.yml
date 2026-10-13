@@ -1,0 +1,65 @@
+name: floci-demo
+
+# Full stack (AWS, Azure, GCP, OCI + UI):  docker compose up -d
+
+services:
+  # AWS emulator (S3 + SQS used by the .NET demo)
+  floci-aws:
+    image: floci/floci:2.2.0-compat
+    ports:
+      - "127.0.0.1:4566:4566"
+
+  # Azure emulator
+  floci-az:
+    image: floci/floci-az:0.13.0
+    ports:
+      - "127.0.0.1:4577:4577"
+    environment:
+      # Serves HTTPS on 4577 as well, which the azurerm Terraform provider requires.
+      FLOCI_AZ_TLS_ENABLED: "true"
+      FLOCI_AZ_STORAGE_MODE: memory
+      FLOCI_AZ_SERVICES_VM_MOCKED: "true"
+
+  # GCP emulator
+  floci-gcp:
+    image: floci/floci-gcp:0.10.0
+    ports:
+      - "127.0.0.1:4588:4588"
+
+  # Oracle Cloud (OCI) emulator
+  floci-oci:
+    image: floci/floci-oci:0.4.2
+    ports:
+      - "127.0.0.1:4599:4599"
+    environment:
+      # Mock mode: Functions and OKE work without mounting the Docker socket.
+      FLOCI_OCI_SERVICES_FUNCTIONS_MOCK: "true"
+      FLOCI_OCI_SERVICES_OKE_MOCK: "true"
+
+    # Web UI (floci-ui), pinned to a known commit
+  floci-ui:
+    image: floci-ui-local:c3e0aef
+    build:
+      context: https://github.com/floci-io/floci-ui.git#c3e0aefaa65726390c32170a6e3ae04a4bb65157
+      dockerfile: docker/Dockerfile
+    ports:
+      - "127.0.0.1:4500:4500"
+    environment:
+      PORT: "4500"
+      FLOCI_ENDPOINT: http://floci-aws:4566
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      FLOCI_AZURE_ENDPOINT: http://floci-az:4577
+      FLOCI_GCP_ENDPOINT: http://floci-gcp:4588
+      FLOCI_GCP_PROJECT: floci-local
+      FLOCI_OCI_ENDPOINT: http://floci-oci:4599
+    depends_on:
+      floci-aws:
+        condition: service_healthy
+      floci-az:
+        condition: service_healthy
+      floci-gcp:
+        condition: service_healthy
+      floci-oci:
+        condition: service_healthy

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2803C6FA-0E45-4367-9C81-96D9BBE35417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlociDemo.Api", "src\FlociDemo.Api\FlociDemo.Api.csproj", "{7971E5E4-42C6-4D37-97C0-0C0713D38B7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DA315976-0EEB-4B2E-A49C-8F7710F3ABD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlociDemo.Tests", "tests\FlociDemo.Tests\FlociDemo.Tests.csproj", "{A3E87F52-5119-492F-A8FA-13D1758D45AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7971E5E4-42C6-4D37-97C0-0C0713D38B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7971E5E4-42C6-4D37-97C0-0C0713D38B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7971E5E4-42C6-4D37-97C0-0C0713D38B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7971E5E4-42C6-4D37-97C0-0C0713D38B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E87F52-5119-492F-A8FA-13D1758D45AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E87F52-5119-492F-A8FA-13D1758D45AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E87F52-5119-492F-A8FA-13D1758D45AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E87F52-5119-492F-A8FA-13D1758D45AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7971E5E4-42C6-4D37-97C0-0C0713D38B7E} = {2803C6FA-0E45-4367-9C81-96D9BBE35417}
+		{A3E87F52-5119-492F-A8FA-13D1758D45AD} = {DA315976-0EEB-4B2E-A49C-8F7710F3ABD4}
+	EndGlobalSection
+EndGlobal
